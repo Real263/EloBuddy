@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EloBuddy;
@@ -61,7 +61,7 @@ namespace LeeSin
                     {
                         var pred = SpellManager.Q1.GetPrediction(Smite_Target);
                         var width = Smite_Target.BoundingRadius + SpellManager.Q1.Width;//
-                        var timeToArriveQ = (Extensions.Distance(Missile, pred.CastPosition) - width) / SpellManager.Q1.Speed - SpellManager.SmiteCastDelay + Game.Ping / 2000f - 0.1f;
+                        var timeToArriveQ = (Extensions.Distance(Missile, pred.CastPosition) - width) / SpellManager.Q1.Speed - SpellManager.SmiteCastDelay - (Game.Ping / 2000f + 0.07f);
                         if (timeToArriveQ <= 0)
                         {
                             canSmite = true;
@@ -73,7 +73,7 @@ namespace LeeSin
                     }
                 }
             }
-            if (EndTime - Game.Time < 0.25f)
+            if (EndTime - Game.Time <= 0.25f)
             {
                 if (!ModeManager.IsNone)
                 {

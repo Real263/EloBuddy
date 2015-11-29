@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+using System;
+using System.Collections.Generic;
+>>>>>>> origin/master
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
@@ -52,9 +57,15 @@ namespace LeeSin
                     }
                     else if (WillHit(_smiteTarget))
                     {
+<<<<<<< HEAD
                         var pred = SpellManager.Q1.GetPrediction(_smiteTarget);
                         var width = _smiteTarget.BoundingRadius;// + SpellManager.Q1.Width;//
                         var timeToArriveQ = (_missile.Distance(pred.CastPosition) - width) / SpellManager.Q1.Speed - SpellManager.SmiteCastDelay - (Game.Ping / 2000f + 0.07f);
+=======
+                        var pred = SpellManager.Q1.GetPrediction(Smite_Target);
+                        var width = Smite_Target.BoundingRadius + SpellManager.Q1.Width;//
+                        var timeToArriveQ = (Extensions.Distance(Missile, pred.CastPosition) - width) / SpellManager.Q1.Speed - SpellManager.SmiteCastDelay - (Game.Ping / 2000f + 0.07f);
+>>>>>>> origin/master
                         if (timeToArriveQ <= 0)
                         {
                             canSmite = true;

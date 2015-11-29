@@ -24,18 +24,18 @@ namespace LeeSin
             };
             Q2 = new Spell.Active(SpellSlot.Q, 1300);
 
-            W1 = new Spell.Skillshot(SpellSlot.W, 900, SkillShotType.Linear, 50, 1500, 150)
+            W1 = new Spell.Skillshot(SpellSlot.W, 1200, SkillShotType.Linear, 50, 1500, 100)
             {
                 AllowedCollisionCount = int.MaxValue
             };
 
             W2 = new Spell.Active(SpellSlot.W, 700);
 
-            E1 = new Spell.Skillshot(SpellSlot.E, 350, SkillShotType.Linear, 250, 2500, 150)
+            E1 = new Spell.Skillshot(SpellSlot.E, 350, SkillShotType.Linear, 250, 2500, 100)
             {
                 AllowedCollisionCount = int.MaxValue
             };
-            E2 = new Spell.Skillshot(SpellSlot.E, 675, SkillShotType.Linear, 250, 2500, 150)
+            E2 = new Spell.Skillshot(SpellSlot.E, 675, SkillShotType.Linear, 250, 2500, 100)
             {
                 AllowedCollisionCount = int.MaxValue
             };
@@ -188,7 +188,7 @@ namespace LeeSin
             if (SpellSlot.E.IsReady() && SpellSlot.E.IsFirstSpell() && target.IsValidTarget(E1.Range))
             {
                 var pred = E1.GetPrediction(target);
-                if (pred.HitChancePercent >= 50)
+                if (pred.HitChancePercent >= SpellSlot.E.HitChancePercent())
                 {
                     Util.MyHero.Spellbook.CastSpell(E1.Slot, true);
                 }
@@ -199,7 +199,7 @@ namespace LeeSin
             if (SpellSlot.E.IsReady() && !SpellSlot.E.IsFirstSpell() && target.IsValidTarget(E2.Range))
             {
                 var pred = E2.GetPrediction(target);
-                if (pred.HitChancePercent >= 50)
+                if (pred.HitChancePercent >= SpellSlot.E.HitChancePercent())
                 {
                     Util.MyHero.Spellbook.CastSpell(E2.Slot, true);
                 }
@@ -233,14 +233,14 @@ namespace LeeSin
         {
             get
             {
-                return SpellSlot.W.IsReady() && SpellSlot.W.IsFirstSpell() && Util.MyHero.Mana >= SpellSlot.W.GetSpellDataInst().SData.ManaCostArray[SpellSlot.W.GetSpellDataInst().Level - 1];
+                return SpellSlot.W.IsReady() && SpellSlot.W.IsFirstSpell() && Util.MyHero.Mana >= SpellSlot.W.GetSpellDataInst().SData.Mana;
             }
         }
         public static bool CanCastQ1
         {
             get
             {
-                return SpellSlot.Q.IsReady() && SpellSlot.Q.IsFirstSpell() && Util.MyHero.Mana >= SpellSlot.Q.GetSpellDataInst().SData.ManaCostArray[SpellSlot.Q.GetSpellDataInst().Level - 1];
+                return SpellSlot.Q.IsReady() && SpellSlot.Q.IsFirstSpell() && Util.MyHero.Mana >= SpellSlot.Q.GetSpellDataInst().SData.Mana;
             }
         }
         public static bool SmiteIsReady

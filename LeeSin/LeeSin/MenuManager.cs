@@ -23,10 +23,13 @@ namespace LeeSin
             AddonMenu = MainMenu.AddMenu(AddonName, AddonName + " by " + Author + " v1.1");
             AddonMenu.AddLabel(AddonName + " made by " + Author);
 
-            SubMenu["Prediction"] = AddonMenu.AddSubMenu("Prediction", "Prediction");
+            SubMenu["Prediction"] = AddonMenu.AddSubMenu("Prediction", "Prediction2");
             SubMenu["Prediction"].AddGroupLabel("Q Settings");
-            SubMenu["Prediction"].Add("QCombo", new Slider("Combo HitChancePercent", 85, 0, 100));
-            SubMenu["Prediction"].Add("QHarass", new Slider("Harass HitChancePercent", 91, 0, 100));
+            SubMenu["Prediction"].Add("QCombo", new Slider("Combo HitChancePercent", 78, 0, 100));
+            SubMenu["Prediction"].Add("QHarass", new Slider("Harass HitChancePercent", 83, 0, 100));
+            SubMenu["Prediction"].AddGroupLabel("E Settings");
+            SubMenu["Prediction"].Add("ECombo", new Slider("Combo HitChancePercent", 78, 0, 100));
+            SubMenu["Prediction"].Add("EHarass", new Slider("Harass HitChancePercent", 83, 0, 100));
 
             //Combo
             SubMenu["Combo"] = AddonMenu.AddSubMenu("Combo", "Combo");

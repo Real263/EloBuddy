@@ -62,8 +62,9 @@ namespace LeeSin
             GameObject.OnDelete += Obj_Ward_OnDelete;
             _wardsAvailable =
                 ObjectManager.Get<Obj_AI_Minion>().Where(m => m.IsWard() && m.IsValid && !m.IsDead).ToList();
+            //Shop.OnBuyItem += Shop_OnBuyItem;
         }
-
+        
         private static void Shop_OnBuyItem(AIHeroClient sender, ShopActionEventArgs args)
         {
             Chat.Print(args.Id);

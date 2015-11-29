@@ -96,7 +96,7 @@ namespace LeeSin
                         if (SpellManager.CanCastQ1)
                         {
                             var predtarget = SpellManager.Q1.GetPrediction(target);
-                            if (Menu.GetCheckBoxValue("Object") && predtarget.CollisionObjects.Count() > 1)
+                            if (Menu.GetCheckBoxValue("Object") && predtarget.CollisionObjects.Length > 1)
                             {
                                 foreach (var pred in EntityManager.MinionsAndMonsters.Get(EntityManager.MinionsAndMonsters.EntityType.Both, EntityManager.UnitTeam.Enemy, Util.MyHero.Position, SpellManager.Q2.Range).Where(m => m.IsValidTarget() && SpellSlot.Q.GetSpellDamage(m) < Prediction.Health.GetPrediction(m, SpellManager.Q1.CastDelay + 1000 * (int)(Extensions.Distance(Util.MyHero, m) / SpellManager.Q1.Speed)) && Extensions.Distance(Util.MyHero, target, true) > Extensions.Distance(m, target, true) && Extensions.Distance(m, target, true) < Math.Pow(WardManager.WardRange - DistanceBetween - Offset, 2)).OrderBy(m => Extensions.Distance(target, m, true)).Select(minion => SpellManager.Q1.GetPrediction(minion)).Where(pred => pred.HitChancePercent >= SpellSlot.Q.HitChancePercent()))
                                 {
@@ -109,11 +109,11 @@ namespace LeeSin
                             }
                             SpellManager.CastQ1(target);
                         }
-                        if (Extensions.Distance(Util.MyHero, target, true) > Math.Pow(WardManager.WardRange - DistanceBetween, 2))
+                        if (Util.MyHero.Distance(target, true) > Math.Pow(WardManager.WardRange - DistanceBetween, 2))
                         {
                             if (_Q.HasQ2Buff)
                             {
-                                if (_Q.IsValidTarget && Extensions.Distance(target, _Q.Target, true) < Math.Pow(WardManager.WardRange - DistanceBetween - Offset, 2))
+                                if (_Q.IsValidTarget && target.Distance(_Q.Target, true) < Math.Pow(WardManager.WardRange - DistanceBetween - Offset, 2))
                                 {
                                     TargetSelector.ForcedTarget = target;
                                     Champion.ForceQ2(target);
@@ -121,7 +121,7 @@ namespace LeeSin
                             }
                         }
                     }
-                    if (Extensions.Distance(Util.MyHero, target, true) < Math.Pow(WardManager.WardRange - DistanceBetween, 2) && !IsRecent)
+                    if (Util.MyHero.Distance(target, true) < Math.Pow(WardManager.WardRange - DistanceBetween, 2) && !IsRecent)
                     {
                         switch (Priority)
                         {
@@ -160,7 +160,7 @@ namespace LeeSin
         {
             if (SpellManager.FlashIsReady)
             {
-                if (Extensions.Distance(target, Util.MyHero, true) <= SpellManager.R.RangeSquared)
+                if (target.Distance(Util.MyHero, true) <= SpellManager.R.RangeSquared)
                 {
                     _allySelected = null;
                     _positionSelected = EndPosition;
@@ -207,7 +207,7 @@ namespace LeeSin
                         FlashR(target);
                         break;
                     default:
-                        if (Extensions.Distance(target, Util.MyHero, true) <= SpellManager.R.RangeSquared)
+                        if (target.Distance(Util.MyHero, true) <= (SpellManager.R.Range * 1.25).Pow())
                         {
                             RFlash(target);
                         }

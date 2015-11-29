@@ -94,22 +94,22 @@ namespace LeeSin
                 if (q)
                 {
                     ComboDamage += SpellSlot.Q.GetSpellDamage(target, 2);
-                    ManaWasted += SpellSlot.Q.GetSpellDataInst().SData.ManaCostArray[SpellSlot.Q.GetSpellDataInst().Level - 1];
+                    ManaWasted += SpellSlot.Q.GetSpellDataInst().SData.Mana;
                 }
                 if (w)
                 {
                     ComboDamage += SpellSlot.W.GetSpellDamage(target);
-                    ManaWasted += SpellSlot.W.GetSpellDataInst().SData.ManaCostArray[SpellSlot.W.GetSpellDataInst().Level - 1];
+                    ManaWasted += SpellSlot.W.GetSpellDataInst().SData.Mana;
                 }
                 if (e)
                 {
                     ComboDamage += SpellSlot.E.GetSpellDamage(target, 2);
-                    ManaWasted += SpellSlot.E.GetSpellDataInst().SData.ManaCostArray[SpellSlot.E.GetSpellDataInst().Level - 1];
+                    ManaWasted += SpellSlot.E.GetSpellDataInst().SData.Mana;
                 }
                 if (r)
                 {
                     ComboDamage += SpellSlot.R.GetSpellDamage(target);
-                    ManaWasted += SpellSlot.R.GetSpellDataInst().SData.ManaCostArray[SpellSlot.R.GetSpellDataInst().Level - 1];
+                    ManaWasted += SpellSlot.R.GetSpellDataInst().SData.Mana;
                 }
                 if (SpellManager.IgniteIsReady)
                 {

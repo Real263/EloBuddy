@@ -17,7 +17,7 @@ namespace ToasterBuddy
         private static int _toasterHeader = -1;
         private static GamePacket _toasterGamePacket;
         private static string _toasterText = "Waiting for packet.";
-        private const int TimeLimit = 250;
+        private const int TimeLimit = 999;
         private static float _startTime;
         private static bool _toasterGamePacketSent;
         private static bool _keyPressed ;
